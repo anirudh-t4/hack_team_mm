@@ -5,6 +5,7 @@ import {getCategories, getFilteredProducts} from './apiCore';
 import Checkbox from './Checkbox';
 import {prices} from './fixedPrices';
 import Radiobox from './Radiobox';
+import Popup from 'reactjs-popup';
 
 const Shop = () => {
     const [myFilters, setMyFilters] = useState({
@@ -107,13 +108,13 @@ const Shop = () => {
                         <Checkbox categories={categories} handleFilters={filters => handleFilters(filters, 'category')}/>
                     </ul>
 
-                    <h5>Filter by Price Range</h5>
+                    <h5>Filter by Reward Points</h5>
                     <div>
                         <Radiobox prices={prices} handleFilters={filters => handleFilters(filters, 'price')}/>
                     </div>
                 </div>
                 <div className="col-8">
-                    <h2 className="mb-4">Products</h2>
+                    <h2 className="mb-4">Complimentary Services</h2>
                     <div className="row">
                     {filteredResults.map((product, i) => (
                             <div key={i} className="col-4 mb-3">

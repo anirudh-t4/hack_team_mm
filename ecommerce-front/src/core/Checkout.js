@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {getBraintreeClientToken, processPayment, createOrder} from './apiCore';
+import {processPayment, createOrder} from './apiCore';
 import {isAuthenricated} from '../auth/index'
 import { Link } from 'react-router-dom';
-import DropIn from 'braintree-web-drop-in-react';
 import {emptyCart} from './cartHelpers';
 
 const Checkout = ({products}) => {
     const [data, setData] = useState({
         loading: false,
-        success: false, 
+        success: false,
         clientToken: null,
         error: '',
         instance: {},
@@ -18,19 +17,8 @@ const Checkout = ({products}) => {
     const userId = isAuthenricated() && isAuthenricated().user._id;
     const token = isAuthenricated() && isAuthenricated().token;
 
-    const getToken = (userId, token) => {
-        getBraintreeClientToken(userId, token)
-        .then(data => {
-            if(data.error) {
-                setData({...data, error: data.error});
-            } else {
-                setData({clientToken: data.clientToken});
-            }
-        })
-    };
-
     useEffect(() => {
-        getToken(userId, token);
+
     },[]);
 
     const handleAddress = event => {
@@ -70,7 +58,7 @@ const Checkout = ({products}) => {
                 processPayment(userId, token, paymentData)
                 .then(response => {
                     setData({...data, success: response.success});
-                    
+
                     const createOrderData = {
                         products: products,
                         transaction_id: response.transaction.id,
@@ -108,8 +96,8 @@ const Checkout = ({products}) => {
                         <div className="gorm-group mb-3">
                             <label className="text-muted">Delivery Address: </label>
                             <textarea onChange={handleAddress} className="form-control" value={data.address} placeholder="Type your delivery address here ..."/>
-                        </div>   
-                        <DropIn options={{authorization: data.clientToken, paypal: {flow: 'vault'}}} onInstance={instance => (data.instance = instance)}/>
+                        </div>
+
                         <button onClick={buy} className="btn btn-success btn-block">Pay</button>
                     </div>
                 ):null}

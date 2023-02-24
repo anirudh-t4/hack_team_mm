@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom';
 import Layout from '../core/Layout';
 import {signin, authenticate, isAuthenricated} from '../auth/index';
 
+
 const Signin = () => {
     const [values, setValues] = useState({
         email:'',
@@ -39,17 +40,23 @@ const Signin = () => {
 
     const signUpForm = () => {
         return(
-            <form>
-                <div className="form-group">
-                    <label className="text-muted">E-Mail</label>
-                    <input onChange={handleChange('email')} type="email" className="form-control"  value={email}/>
+
+        <form>
+                <center><h1 style={{color: "red", fontWeight:"bolder"}}>ARC SABRE</h1></center>
+                <div className="mb-3">
+                  <label>E-mail</label>
+                  <input onChange={handleChange('email')} type="email" className="form-control"  value={email}/>
+
                 </div>
-                <div className="form-group">
-                    <label className="text-muted">Password</label>
-                    <input onChange={handleChange('password')} type="password" className="form-control"  value={password}/>
+                <div className="mb-3">
+                  <label>Password</label>
+                  <input onChange={handleChange('password')} type="password" className="form-control"  value={password}/>
+
                 </div>
                 <button onClick={clickSubmit} className="btn btn-primary">Submit</button>
-            </form>
+              </form>
+
+
         );
     };  
     
@@ -99,3 +106,5 @@ const Signin = () => {
 }
 
 export default Signin;
+
+

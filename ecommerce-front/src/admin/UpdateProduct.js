@@ -126,7 +126,7 @@ const UpdateProduct = ({match}) => {
                     <textarea onChange={handleChange('description')} className="form-control" value={description} />
                 </div>
                 <div className="form-group">
-                    <label className="text-muted">Price</label>
+                    <label className="text-muted">Reward Points</label>
                     <input onChange={handleChange('price')} type="number" className="form-control" value={price} />
                 </div>
                 <div className="form-group">
@@ -143,7 +143,7 @@ const UpdateProduct = ({match}) => {
                     <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
                 </div>
                 <div className="form-group">
-                    <label className="text-muted">Shipping</label>
+                    <label className="text-muted">Make available</label>
                     <select onChange={handleChange('shipping')} className="form-control">
                         <option>Please Select</option>
                         <option value="1">Yes</option>

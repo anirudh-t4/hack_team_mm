@@ -14,15 +14,10 @@ const isActive = (history, path) => {
 const Menu = ({history}) => {
     return(
         <div>
-            <ul className="nav nav-tabs bg-primary">
+            <ul className="nav nav-tabs bg-danger">
+
                 <li className="nav-item">
-                    <Link className="nav-link" style={isActive(history, '/')} to="/">Home</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" style={isActive(history, '/shop')} to="/shop">Shop</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" style={isActive(history, '/cart')} to="/cart">Cart <sup><small className="cart-badge">{itemTotal()}</small></sup></Link>
+                    <Link className="nav-link" style={isActive(history, '/shop')} to="/shop">Services</Link>
                 </li>
                 {isAuthenricated() && isAuthenricated().user.role === 0 && (
                     <li className="nav-item">
@@ -44,6 +39,12 @@ const Menu = ({history}) => {
                         </li>
                     </>
                 )}
+                {isAuthenricated() && isAuthenricated().user.role === 1 && (
+                                    <li className="nav-item">
+                                          <Link className="nav-link" style={isActive(history, '/')} to="/">Home</Link>
+                                     </li>
+                     )}
+
                 {isAuthenricated() && (
                     <li className="nav-item">
                         <span className="nav-link" style={{cursor: 'pointer', color: '#ffffff'}} onClick={() => signout(() => {

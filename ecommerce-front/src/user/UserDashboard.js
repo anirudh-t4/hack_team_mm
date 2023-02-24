@@ -32,7 +32,7 @@ const Dashboard = () => {
                 <h4 className="card-header">User Links</h4>
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <Link className="nav-link" to="/cart">My Cart</Link>
+                        <Link className="nav-link" to="/cart">My Reward points</Link>
                     </li>
                     <li className="list-group-item">
                         <Link className="nav-link" to={`/profile/${_id}`}>Update Profile</Link>
@@ -94,7 +94,7 @@ const Dashboard = () => {
                 </div>
                 <div className="col-9">
                     {userInfo()}
-                    {purchaseHistory(history)}
+
                 </div>
             </div>
         </Layout>
